@@ -1,0 +1,314 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(248, 250, 252, 0.747);
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contanerPai{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.contanerProduto{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.phone1{
+    height: 250px;
+    transition: transform 0.3s ease;
+}
+
+.FotoProduto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.FotoPrincipal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(248, 250, 252, 0.829);
+    height: 300px;
+    border: solid 1px rgba(206, 200, 200, 0.651);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.Fotoslateral{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.miniatura{
+    background-color: rgba(248, 250, 252, 0.829);
+    border-radius: 8px;
+    border: solid 1px rgba(209, 207, 207, 0.801);
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.miniatura:hover{
+    border-color: #0071e3;
+}
+
+.miniatura.ativa{
+    border-color: #0071e3;
+    background-color: #f0f8ff;
+}
+
+.Fotoslateral .phone{
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.miniatura:hover .phone{
+    transform: scale(1.1);
+}
+
+.NomeProduto p{
+    background-color: rgba(228, 231, 233, 0.637);
+    width: fit-content;
+    padding: 8px 12px;
+    font-size: 0.80rem;
+    border-radius: 8px;
+    color: rgba(0, 0, 0, 0.664);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.NomeProduto h2{
+    font-size: 2rem;
+    margin: 0;
+    color: #1d1d1f;
+}
+
+.NomeProduto h3{
+    margin-top: 5px;
+    color: rgba(37, 37, 37, 0.603);
+    font-weight: 400;
+}
+
+.avaliacao{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.estrelas{
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.avaliacao p{
+    margin: 0;
+    color: #1d1d1f;
+    font-weight: 500;
+}
+
+.disponibilidade{
+    color: #00a650 !important;
+    font-weight: 600 !important;
+    margin: 0;
+}
+
+.mostrarvalor{
+    margin: 20px 0;
+}
+
+.valor h2{
+    font-size: 2.5rem;
+    color: #1d1d1f;
+    margin: 10px 0 5px 0;
+}
+
+.valor p{
+    color: #6e6e73;
+    margin: 0;
+}
+
+.escolhacor, .escolhaarmazenamento{
+    margin: 25px 0;
+}
+
+.escolhacor h3, .escolhaarmazenamento h3{
+    margin-bottom: 15px;
+    color: #1d1d1f;
+    font-size: 1.2rem;
+}
+
+.opcoesCor{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.botaoCor{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #d2d2d7;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    position: relative;
+}
+
+.botaoCor:hover{
+    border-color: #0071e3;
+}
+
+.botaoCor.selecionado{
+    border-color: #0c0c0c;
+}
+
+
+.bolinhaCor{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: block;
+}
+
+.corBlack .bolinhaCor{
+    background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+}
+
+.corWhite .bolinhaCor{
+    background: linear-gradient(135deg, #f5f5f7, #d2d2d7);
+    border: 1px solid #d2d2d7;
+}
+
+.nomeCorSelecionada{
+    margin-top: 10px !important;
+    color: #1d1d1f !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+}
+
+.opcoesArmazenamento{
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.botaoArmazenamento{
+    padding: 12px 20px;
+    border: 2px solid #d2d2d7;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.botaoArmazenamento:hover{
+    border-color: #030303;
+    background-color: #f5f5f7;
+}
+
+.botaoArmazenamento.selecionado{
+    border-color: #030303;
+    background-color: #070707;
+    color: white;
+}
+
+.botaoComprar h4{
+    color: #00a650;
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+}
+
+.botaoComprar p{
+    color: #6e6e73;
+    margin: 0 0 20px 0;
+}
+
+.botaoPrincipal{
+    background-color: #050505;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+}
+
+.textoInformativo{
+    border-top: 1px solid #d2d2d7;
+    padding-top: 20px;
+}
+
+.textoInformativo p{
+    color: #6e6e73;
+    margin: 8px 0;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .contanerProduto{
+        flex-direction: row;
+        gap: 40px;
+    }
+    
+    .FotoProduto{
+        flex: 1;
+    }
+    
+    .informacoesProduto{
+        flex: 1;
+    }
+    
+    .phone1{
+        height: 300px;
+    }
+    
+    .FotoPrincipal{
+        height: 350px;
+    }
+
+    .Fotoslateral .phone{
+        height: 60px;
+    }
+    
+    .botaoCor{
+        width: 45px;
+        height: 45px;
+    }
+    
+    .bolinhaCor{
+        width: 35px;
+        height: 35px;
+    }
+}
