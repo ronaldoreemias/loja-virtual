@@ -183,24 +183,7 @@
     margin-bottom: 30px;
 }
 
-.qrCodePlaceholder {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
 
-.qrCode {
-    width: 200px;
-    height: 200px;
-    background-color: white;
-    border: 2px dashed #d2d2d7;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6e6e73;
-    font-weight: bold;
-}
 
 .chavePix {
     background-color: white;

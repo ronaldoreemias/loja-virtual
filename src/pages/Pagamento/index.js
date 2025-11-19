@@ -43,15 +43,20 @@ function Pagamento() {
         };
 
         localStorage.setItem('compraFinalizada', JSON.stringify(compraFinal));
+        
 
         try {
-            const response = await fetch("", {
+            const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(compraFinal)
+            body: JSON.stringify({
+                ...compraFinal,
+                access_key: "c35a01ab-cf18-4f01-ae59-67c8726faa8a"
+            })
             });
+
 
             if (response.ok) {
             console.log("Dados enviados com sucesso!");
@@ -125,7 +130,7 @@ function Pagamento() {
                                     onChange={(e) => setMetodoPagamento(e.target.value)}
                                 />
                                 <span className={style.checkmark}></span>
-                                PIX
+                                Pix indisponivel no momento
                             </label>
 
                             <label className={style.opcaoPagamento}>
@@ -199,11 +204,7 @@ function Pagamento() {
 
                         {metodoPagamento === "pix" && (
                             <div className={style.infoPix}>
-                                <div className={style.qrCodePlaceholder}>
-                                    <div className={style.qrCode}>QR CODE</div>
-                                </div>
-                                <p>Escaneie o QR Code com seu app bancário para pagar com PIX</p>
-                                <p className={style.chavePix}>Chave PIX: loja@exemplo.com</p>
+                                
                             </div>
                         )}
 
