@@ -213,6 +213,10 @@ body{
     font-size: 1rem !important;
 }
 
+.escolhaarmazenamento h3{
+    width: 100%;
+}
+
 .opcoesArmazenamento{
     display: flex;
     width: 100%;
