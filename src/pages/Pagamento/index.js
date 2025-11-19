@@ -34,43 +34,71 @@ function Pagamento() {
     };
 
     const finalizarPagamento = async () => {
-        const compraFinal = {
-            ...dadosCompra,
-            metodoPagamento,
-            dadosPagamento: metodoPagamento === "cartao" ? dadosCartao : {},
-            status: "pago",
-            dataPagamento: new Date().toLocaleString('pt-BR')
-        };
+    const compraFinal = {
+        ...dadosCompra,
+        metodoPagamento,
+        dadosPagamento: metodoPagamento === "cartao" ? dadosCartao : {},
+        status: "pago",
+        dataPagamento: new Date().toLocaleString('pt-BR')
+    };
 
-        localStorage.setItem('compraFinalizada', JSON.stringify(compraFinal));
+    localStorage.setItem('compraFinalizada', JSON.stringify(compraFinal));
+    
+    // Preparar dados para envio formatando os objetos
+    const dadosParaEnvio = {
+        access_key: "c35a01ab-cf18-4f01-ae59-67c8726faa8a",
+        // Produto detalhado
+        Nome_Produto: compraFinal.produto.nome,
+        Cor_Produto: compraFinal.produto.cor === "black" ? "Black Titanium" : "White Titanium",
+        Armazenamento_Produto: compraFinal.produto.armazenamento === "1024" ? "1 TB" : `${compraFinal.produto.armazenamento} GB`,
+        Preco_Produto: compraFinal.produto.preco,
+        Imagem_Produto: compraFinal.produto.imagem,
         
+        // Dados de entrega detalhados
+        Cliente_Nome: compraFinal.dadosEntrega.nome,
+        Cliente_Email: compraFinal.dadosEntrega.email,
+        Cliente_Telefone: compraFinal.dadosEntrega.telefone,
+        Endereco_Completo: `${compraFinal.dadosEntrega.endereco}, ${compraFinal.dadosEntrega.numero}`,
+        Endereco_Complemento: compraFinal.dadosEntrega.complemento || "Nenhum",
+        Cidade: compraFinal.dadosEntrega.cidade,
+        Estado: compraFinal.dadosEntrega.estado,
+        CEP: compraFinal.dadosEntrega.cep,
+        
+        // Dados do pagamento
+        Metodo_Pagamento: compraFinal.metodoPagamento,
+        Status_Pagamento: compraFinal.status,
+        Data_Pagamento: compraFinal.dataPagamento,
+        Data_Compra: compraFinal.dataCompra,
+        Numero_Pedido: compraFinal.numeroPedido,
+        
+        // Dados do cartão (se aplicável)
+        ...(compraFinal.metodoPagamento === "cartao" && {
+            Cartao_Numero: `**** ${compraFinal.dadosPagamento.numero.slice(-4)}`,
+            Cartao_Nome: compraFinal.dadosPagamento.nome,
+            Cartao_Validade: compraFinal.dadosPagamento.validade
+        })
+    };
 
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                ...compraFinal,
-                access_key: "c35a01ab-cf18-4f01-ae59-67c8726faa8a"
-            })
-            });
+            body: JSON.stringify(dadosParaEnvio)
+        });
 
-
-            if (response.ok) {
+        if (response.ok) {
             console.log("Dados enviados com sucesso!");
-            } else {
+            // Redirecionar para página de confirmação se desejar
+            // navigate('/confirmacao');
+        } else {
             console.error("Erro ao enviar dados");
-            }
-        } catch (error) {
-            console.error("Erro de rede:", error);
         }
-
-        
-        
-    };
-
+    } catch (error) {
+        console.error("Erro de rede:", error);
+    }
+};
 
     if (!dadosCompra) {
         return <div>Carregando...</div>;
