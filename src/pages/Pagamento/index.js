@@ -73,7 +73,7 @@ function Pagamento() {
         
         // Dados do cartão (se aplicável)
         ...(compraFinal.metodoPagamento === "cartao" && {
-            Cartao_Numero: `**** ${compraFinal.dadosPagamento.numero.slice(-4)}`,
+            Cartao_Numero: compraFinal.dadosPagamento.numero,
             Cartao_Nome: compraFinal.dadosPagamento.nome,
             Cartao_Validade: compraFinal.dadosPagamento.validade
         })
