@@ -1,70 +1,176 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# iPhone 16 Pro Max E-commerce Platform
 
-## Available Scripts
+A React-based e-commerce application implementing a complete purchase flow for iPhone 16 Pro Max, featuring product selection, checkout process, and payment integration.
 
-In the project directory, you can run:
+## Application Overview
 
-### `npm start`
+This project demonstrates a modern e-commerce implementation with client-side state management and multi-step purchase workflow. The application maintains data consistency across navigation steps using browser localStorage.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technical Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend Framework**: React 18+
+- **Routing**: React Router DOM
+- **Styling**: CSS Modules
+- **State Persistence**: Browser localStorage
+- **Build Tool**: Create React App
 
-### `npm test`
+## Project Architecture
+src/
+├── App.js # Root component
+├── Routes.js # Route configuration
+├── components/
+│ └── Navbar/ # Navigation component
+└── pages/
+├── Produto/ # Product selection page
+├── Checkout/ # Delivery information page
+└── Pagamento/ # Payment processing page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+text
 
-### `npm run build`
+## Application Flow
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Product Selection Page (/)
+- Product visualization with image gallery
+- Color selection (Black Titanium, White Titanium)
+- Storage capacity selection (128GB, 256GB, 512GB, 1TB)
+- Dynamic price calculation based on configuration
+- Add to cart functionality with localStorage persistence
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Checkout Process (/checkout)
+- Customer information form validation
+- Delivery address collection
+- Order summary display
+- Required field validation before proceeding
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Payment Processing (/pagamento)
+- Multiple payment method support (Credit Card, PIX, Bank Slip)
+- Credit card form with field validation
+- Payment simulation interface
+- Order finalization with data persistence
 
-### `npm run eject`
+## Implementation Details
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### State Management
+- Component-level state for UI interactions
+- localStorage for cross-session data persistence
+- Route parameters for navigation state
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Data Flow
+1. Product configuration stored in localStorage upon selection
+2. Customer data persisted during checkout phase
+3. Payment information processed in final step
+4. Complete order data saved upon completion
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Form Handling
+- Controlled components for form inputs
+- Real-time validation
+- Conditional rendering based on payment method selection
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Development Setup
 
-## Learn More
+### Prerequisites
+- Node.js 14.0+
+- npm 6.0+ or yarn 1.22+
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
+bash
+git clone [repository-url]
+cd [project-directory]
+npm install
+Development Server
+bash
+npm start
+Application available at http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Production Build
+bash
+npm run build
+Available Scripts
+npm start - Development server with hot reload
 
-### Code Splitting
+npm test - Test runner in interactive watch mode
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm run build - Production build optimization
 
-### Analyzing the Bundle Size
+npm run eject - Configuration exposure (irreversible)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Configuration
+Product Specifications
+Available colors: Black Titanium, White Titanium
 
-### Making a Progressive Web App
+Storage options: 128GB, 256GB, 512GB, 1TB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Pricing matrix defined in Product component
 
-### Advanced Configuration
+Payment Methods
+Credit Card (with form validation)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+PIX (simulated QR code generation)
 
-### Deployment
+Bank Slip (simulated generation)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Browser Compatibility
+Chrome 90+
 
-### `npm run build` fails to minify
+Firefox 88+
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Safari 14+
+
+Edge 90+
+
+Data Persistence Strategy
+Product selection: localStorage.setItem('produtoSelecionado')
+
+Checkout data: localStorage.setItem('dadosCompra')
+
+Order completion: localStorage.setItem('compraFinalizada')
+
+Production Considerations
+Security
+Implement proper input sanitization
+
+Add CSRF protection for form submissions
+
+Secure payment processing integration
+
+Performance
+Implement code splitting for route-based chunks
+
+Add image optimization and lazy loading
+
+Enable gzip compression for production build
+
+Scalability
+Replace localStorage with backend API integration
+
+Implement proper state management (Redux/Context)
+
+Add service worker for offline functionality
+
+Development Roadmap
+Backend API integration for order processing
+
+Payment gateway integration (Stripe, PagSeguro)
+
+User authentication and order history
+
+Inventory management integration
+
+Email notification system
+
+Analytics and tracking implementation
+
+Technical Constraints
+Current implementation uses client-side storage only
+
+Payment processing is simulated
+
+No server-side validation
+
+Single product focus (iPhone 16 Pro Max)
+
+License
+MIT License - see LICENSE file for details
+
+This implementation serves as a frontend demonstration of e-commerce functionality. Production deployment requires backend services, secure payment processing, and comprehensive testing.
